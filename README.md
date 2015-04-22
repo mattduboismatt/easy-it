@@ -1,4 +1,4 @@
-== Easy IT
+### Easy IT
 
 To run the app:
 
