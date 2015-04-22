@@ -6,4 +6,4 @@
 
 2. Start your database: postgres -D /usr/local/var/postgres9.4
 
-3 .Start the app: bundle exec rails server
+3. Start the app: bundle exec rails server
