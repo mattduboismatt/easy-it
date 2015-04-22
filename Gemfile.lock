@@ -266,6 +266,7 @@ DEPENDENCIES
   faker!
   haml
   haml-rails (~> 0.9)
+  html2haml
   jquery-rails
   letter_opener_web
   money-rails

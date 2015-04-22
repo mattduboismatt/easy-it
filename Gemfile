@@ -23,6 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
+  gem 'html2haml'
   gem 'letter_opener_web'
   gem 'pry'
   gem 'pry-nav'
