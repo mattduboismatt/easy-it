@@ -7,3 +7,5 @@
     - @tickets.each do |ticket|
       %li
         %span= link_to ticket.title, ticket
+        %span= link_to "Edit", edit_ticket_path(ticket)
+        %span= link_to "Delete", ticket_path(ticket), method: :delete
