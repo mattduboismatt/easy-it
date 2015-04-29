@@ -4,4 +4,9 @@ unless Rails.env.production?
 end
 
 puts "Creating user"
-FactoryGirl.create(:user, email: "me@foo.bar", password: "password")
+user = FactoryGirl.create(:user, email: "user@easy.com", password: "password")
+
+puts "Creating 5 tickets"
+5.times do
+  FactoryGirl.create(:ticket, user: user)
+end

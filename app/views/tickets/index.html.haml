@@ -1,0 +1,9 @@
+%h3 Welcome to Easy IT
+
+= button_to "New Ticket", new_ticket_path, method: :get
+
+- if @tickets.present?
+  %ul
+    - @tickets.each do |ticket|
+      %li
+        %span= link_to ticket.title, ticket
