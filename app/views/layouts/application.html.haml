@@ -2,11 +2,14 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Mentor Matching Engine
+    %meta{ content: "width=device-width, initial-scale=1", name: "viewport" }
+    %title Easy IT
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
-  %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
-    = javascript_include_tag 'application'
+  %body{ class: "#{controller_name.dasherize}-controller #{action_name.dasherize}-action"}
+    = render "shared/navigation"
+    = render "shared/notifications"
+    %section#content
+      = yield
+    = render "shared/footer"
+    = javascript_include_tag "application"
