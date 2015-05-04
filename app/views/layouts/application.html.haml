@@ -4,12 +4,12 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ content: "width=device-width, initial-scale=1", name: "viewport" }
     %title Easy IT
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body{ class: "#{controller_name.dasherize}-controller #{action_name.dasherize}-action"}
-    = render "shared/navigation"
     = render "shared/notifications"
-    %section#content
-      = yield
-    = render "shared/footer"
+    %header#header
+      = render "shared/navigation"
+    %section#content= yield
+    %footer#footer= render "shared/footer"
     = javascript_include_tag "application"

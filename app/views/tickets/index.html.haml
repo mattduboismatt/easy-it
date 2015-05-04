@@ -9,3 +9,16 @@
         %span= link_to ticket.title, ticket
         %span= link_to "Edit", edit_ticket_path(ticket)
         %span= link_to "Delete", ticket_path(ticket), method: :delete
+
+.left
+  %p this is the left column
+
+  .col1
+    %p One
+  .col2
+    %p Two
+  .col3
+    %p Three
+
+.right
+  this is the right column

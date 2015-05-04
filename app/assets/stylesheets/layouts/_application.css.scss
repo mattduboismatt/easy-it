@@ -1,0 +1,53 @@
+%centered-container {
+	@include outer-container;
+}
+
+%horizontal-list {
+	@include clearfix;
+
+	li {
+		float: left;
+		margin-right: $gutter;
+
+		a {
+			display: inline-block;
+		}
+	}
+}
+
+#header {
+	@extend %centered-container;
+
+	ul {
+		@extend %horizontal-list;
+		@include shift(6);
+	}
+}
+
+#content {
+	@extend %centered-container;
+}
+
+#footer {
+	@extend %centered-container;
+}
+
+.left {
+	@include span-columns(6);
+}
+
+.right {
+	@include span-columns(6);
+}
+
+.col1 {
+	@include span-columns(4);
+}
+
+.col2 {
+	@include span-columns(4);
+}
+
+.col3 {
+	@include span-columns(4);
+}

@@ -1,10 +1,13 @@
 = form_for @ticket do |f|
-  = f.label :title
-  = f.text_field :title, required: true
+  #title-field.field
+    = f.label :title
+    = f.text_field :title, required: true
 
-  = f.label :description
-  = f.text_area :description, required: true
+  #description-field.field
+    = f.label :description
+    = f.text_area :description, required: true
 
-  = f.submit
-  or
-  = link_to "Cancel", :back
+  .form-actions
+    = f.submit
+    or
+    = link_to "Cancel", :back

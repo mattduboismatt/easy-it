@@ -1,0 +1,14 @@
+.tickets-controller {
+  #title-field {
+    @include span-columns(6);
+  }
+
+  #description-field {
+    @include span-columns(6);
+    @include omega;
+  }
+}
+
+.tickets-list {
+  
+}
