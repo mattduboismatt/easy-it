@@ -1,11 +1,21 @@
 .tickets-controller {
+  h3 {
+    text-align: center;
+  }
+
   #title-field {
+    @include shift(3);
     @include span-columns(6);
   }
 
   #description-field {
+    @include shift(3);
     @include span-columns(6);
-    @include omega;
+  }
+
+  .form-actions {
+    @include shift(3);
+    @include span-columns(6);
   }
 }
 

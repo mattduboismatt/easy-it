@@ -17,10 +17,16 @@
 
 #header {
 	@extend %centered-container;
+	background-color: $medium-gray;
 
 	ul {
 		@extend %horizontal-list;
-		@include shift(6);
+		margin-left: $gutter;
+
+		a {
+			color: white;
+			font-size: 24px;
+		}
 	}
 }
 
@@ -30,24 +36,4 @@
 
 #footer {
 	@extend %centered-container;
-}
-
-.left {
-	@include span-columns(6);
-}
-
-.right {
-	@include span-columns(6);
-}
-
-.col1 {
-	@include span-columns(4);
-}
-
-.col2 {
-	@include span-columns(4);
-}
-
-.col3 {
-	@include span-columns(4);
 }
