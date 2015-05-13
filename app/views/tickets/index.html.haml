@@ -1,11 +1,20 @@
-%h3 Welcome to Easy IT
+%header
+  %h3 Your Tickets
+  = button_to "New Ticket", new_ticket_path, method: :get
 
-= button_to "New Ticket", new_ticket_path, method: :get
-
-- if @tickets.present?
-  %ul
-    - @tickets.each do |ticket|
-      %li
-        %span= link_to ticket.title, ticket
-        %span= link_to "Edit", edit_ticket_path(ticket)
-        %span= link_to "Delete", ticket_path(ticket), method: :delete
+%main
+  - if @tickets.present?
+    .main-wrap
+      %ul.tickets-list
+        - @tickets.each do |ticket|
+          %li.ticket
+            %span.ticket-state{class: "ticket-#{ticket.state}"}
+              #{ticket.state.upcase}
+            .ticket-details
+              %span.ticket-title= link_to ticket.title, ticket
+              %span.ticket-updated
+                %span Last Updated
+                #{formatted_time(ticket.updated_at)}
+              .ticket-actions
+                %span= button_to "Edit", edit_ticket_path(ticket)
+                %span= button_to "Delete", ticket, method: :delete, data: { confirm: "Are you sure you want to delete this project?" }

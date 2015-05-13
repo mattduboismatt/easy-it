@@ -17,8 +17,76 @@
     @include shift(3);
     @include span-columns(6);
   }
-}
 
-.tickets-list {
-  
+  &.index-action {
+    
+    ul.tickets-list {
+      li {
+        border-bottom: $base-border;
+        padding: .75em 0;
+      }
+    }
+
+    .ticket-details {
+      display: inline;
+    }
+
+    .ticket-state,
+    .ticket-title,
+    .ticket-updated,
+    .ticket-actions {
+      display: inline-block;
+    }
+
+    .ticket-state {
+      margin-left: 5%;
+      width: 10%;
+      text-align: center;
+      border-radius: 20px;
+      font-weight: bold;
+
+
+      &.ticket-open {
+        background-color: $open-ticket-color;
+        color: white;
+      }
+
+      &.ticket-pending {
+        background-color: $pending-ticket-color;
+      }
+
+      &.ticket-active {
+        background-color: $active-ticket-color;
+        color: white;
+      }
+
+      &.ticket-closed {
+        background-color: $closed-ticket-color;
+        color: white;
+      }
+    }
+
+    .ticket-title {
+      margin-left: 5%;
+      width: 40%;
+    }
+
+    .ticket-updated {
+      width: 12%;
+    }
+
+    .ticket-actions {
+      margin-left: 5%;
+
+      span {
+        display: inline-block;
+        margin-left: 15px;
+      }
+      input {
+        color: $dark-gray;
+        background-color: $light-gray;
+      }
+    }
+
+  }
 }
