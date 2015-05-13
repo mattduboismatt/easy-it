@@ -7,9 +7,8 @@
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body{ class: "#{controller_name.dasherize}-controller #{action_name.dasherize}-action"}
+    = render "shared/navigation"
     = render "shared/notifications"
-    %header#header
-      = render "shared/navigation"
     %section#content= yield
     %footer#footer= render "shared/footer"
     = javascript_include_tag "application"

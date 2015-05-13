@@ -1,7 +1,6 @@
 %centered-container {
 	@include outer-container;
 }
-
 %horizontal-list {
 	@include clearfix;
 
@@ -15,23 +14,124 @@
 	}
 }
 
-#header {
-	@extend %centered-container;
-	background-color: $medium-gray;
+$large-screen: em(860) !default;
+$horizontal-bar-mode: $large-screen;
 
-	ul {
+header.navigation {
+	$navigation-background: #508EB3;
+	$navigation-height: 60px;
+	$navigation-color: transparentize(white, 0.3);
+	$navigation-color-hover: white;
+
+	background-color: $navigation-background;
+	border-bottom: 1px solid darken($navigation-background, 10);
+	min-height: $navigation-height;
+	width: 100%;
+	z-index: 999;
+
+	.navigation-wrapper {
+	  @include clearfix;
+	  @extend %centered-container;
+	  position: relative;
+	  z-index: 9999;
+	}
+
+	ul.navigation-menu {
 		@extend %horizontal-list;
-		margin-left: $gutter;
+	}
+
+	ul li.nav-link {
+		background: $navigation-background;
+		line-height: $navigation-height;
+		overflow: hidden;
+		padding-right: 0.8em;
+		text-align: right;
+		z-index: 9999;
+
+		@include media ($horizontal-bar-mode) {
+		  background: transparent;
+		  display: inline;
+		  line-height: $navigation-height;
+		  text-decoration: none;
+		  width: auto;
+		}
 
 		a {
-			color: white;
-			font-size: 24px;
+		  color: $navigation-color;
+		  display: inline-block;
+		  font-weight: 400;
+		  text-decoration: none;
+
+		  @include media ($horizontal-bar-mode) {
+		    padding-right: 1em;
+		  }
+
+		  &:focus, &:hover {
+		    color: $navigation-color-hover;
+		  }
 		}
 	}
 }
 
+$base-spacing: 1.5em !default;
+$alert-color: #fff6bf !default;
+$error-color: #fbe3e4 !default;
+$notice-color: #e5edf8 !default;
+$success-color: #e6efc2 !default;
+
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  font-weight: 600;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  text-align: center;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}
+
+.flash-alert {
+  @include flash($alert-color);
+}
+
+.flash-error {
+  @include flash($error-color);
+}
+
+.flash-notice {
+  @include flash($notice-color);
+}
+
+.flash-success {
+  @include flash($success-color);
+}
+
+
 #content {
 	@extend %centered-container;
+  padding: 10px;
+
+  @include media ($horizontal-bar-mode) {
+    padding: 25px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.header-wrap, .main-wrap {
+	@extend %centered-container;
+  @include clearfix;
 }
 
 #footer {
