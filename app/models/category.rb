@@ -3,7 +3,4 @@ class Category < ActiveRecord::Base
   has_many :tickets
 
   validates :name, presence: true
-
-  scope :mains, -> { where(parent: nil) }
-  scope :subs, -> { where.not(parent: nil) }
 end
