@@ -6,17 +6,17 @@ end
 puts "Creating user"
 user = FactoryGirl.create(:user, email: "user@easy.com", password: "password")
 
-puts "Seeding top categories"
-computers = Category.create!(name: 'Computers')
-home_theater = Category.create!(name: 'Home Theater')
-mobile = Category.create!(name: 'Mobile')
-portable = Category.create!(name: 'Portable')
-car_and_gps = Category.create!(name: 'Car and GPS')
-network_data = Category.create!(name: 'Network Data')
-smart_home = Category.create!(name: 'Smart Home')
-upcoming_technologies = Category.create!(name: 'Upcoming Technologies')
+puts "Seeding services"
+computers = Service.create(name: 'Computers')
+home_theater = Service.create(name: 'Home Theater')
+mobile = Service.create(name: 'Mobile')
+portable = Service.create(name: 'Portable')
+car_and_gps = Service.create(name: 'Car and GPS')
+network_data = Service.create(name: 'Network Data')
+smart_home = Service.create(name: 'Smart Home')
+upcoming_technologies = Service.create(name: 'Upcoming Technologies')
 
-puts "Seeding sub categories"
+puts "Seeding categories"
 COMPUTERS = ['Computer Setup','Computer Tune-up','Data Backup or Transfer','Data Recovery','Email Setup','Hardware Install','Hardware Repair','Memory Install','Operating System Install','Printer Setup or Troubleshoot','Software Install & Setup','Technology Consultation','Training','Virus & Spyware Removal','Wireless Networking']
 HOME_THEATER = ['Furniture Assembly','Gaming Setup','Home Theater Consultation','Home Theater Networking','Remote Control Setup','Speaker Install','TV and Video Setup','TV Calibration','TV Repair']
 MOBILE = ['Device Setup','Device Repair','Hands-Free Install','iPod & MP3 Training','Mobile Broadband Setup','Mobile Email Setup','Shield Install','Tablet Setup']
@@ -26,16 +26,16 @@ NETWORK_DATA = ['Data Backup or Transfer','Data Recovery','Gaming Data Transfer'
 SMART_HOME =['Smart Camera Setup','Smart Hub Setup','Smart Lighting Setup','Smart Switch Setup','Smart Thermostat Setup','Home']
 UPCOMING_TECHNOLOGIES=['Electronic Vehicle']
 
-COMPUTERS.each { |sub| computers.children.create!(name: sub) }
-HOME_THEATER.each { |sub| home_theater.children.create!(name: sub) }
-MOBILE.each { |sub| mobile.children.create!(name: sub) }
-PORTABLE.each { |sub| portable.children.create!(name: sub) }
-CAR_AND_GPS.each { |sub| car_and_gps.children.create!(name: sub) }
-NETWORK_DATA.each { |sub| network_data.children.create!(name: sub) }
-SMART_HOME.each { |sub| smart_home.children.create!(name: sub) }
-UPCOMING_TECHNOLOGIES.each { |sub| upcoming_technologies.children.create!(name: sub) }
+COMPUTERS.each { |cat| computers.categories << Category.create(name: cat) }
+HOME_THEATER.each { |cat| home_theater.categories << Category.create(name: cat) }
+MOBILE.each { |cat| mobile.categories << Category.create(name: cat) }
+PORTABLE.each { |cat| portable.categories << Category.create(name: cat) }
+CAR_AND_GPS.each { |cat| car_and_gps.categories << Category.create(name: cat) }
+NETWORK_DATA.each { |cat| network_data.categories << Category.create(name: cat) }
+SMART_HOME.each { |cat| smart_home.categories << Category.create(name: cat) }
+UPCOMING_TECHNOLOGIES.each { |cat| upcoming_technologies.categories << Category.create(name: cat) }
 
 puts "Creating 5 tickets"
 5.times do
-  FactoryGirl.create(:ticket, user: user, category: Category.subs.sample)
+  FactoryGirl.create(:ticket, user: user, category: Category.all.sample)
 end
