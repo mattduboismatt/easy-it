@@ -1,9 +1,9 @@
 = form_for @ticket do |f|
-  #title-field.field
+  .title-field.field
     = f.label :title
     = f.text_field :title, required: true
 
-  #description-field.field
+  .description-field.field
     = f.label :description
     = f.text_area :description, required: true
 
