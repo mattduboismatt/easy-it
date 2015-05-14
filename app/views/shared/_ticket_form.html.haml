@@ -1,4 +1,15 @@
 = form_for @ticket do |f|
+
+  .ticket-category-form
+    .ticket-service-select
+      = f.label :service
+      = f.select :service, @services, include_blank: true
+
+    - if @categories.present?
+      .ticket-category-select.hidden
+        = f.label :category
+        = f.select :category_id, options_for_select(@categories), include_blank: true
+
   .title-field.field
     = f.label :title
     = f.text_field :title, required: true

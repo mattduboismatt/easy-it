@@ -7,6 +7,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    get_service_and_category_options
   end
 
   def create
@@ -53,5 +54,15 @@ class TicketsController < ApplicationController
       :title,
       :description
     ).merge(user_id: current_user.id)
+  end
+
+  def get_service_and_category_options
+    @services = Service.order(:name).map{ |s| [s.name, s.id] }
+    @categories = Category.order(:name).map{ |c| [c.name, c.id] }
+    # if @ticket.service.present?
+    #   @categories = @ticket.service.categories
+    # else
+    #   @categories = []
+    # end
   end
 end
