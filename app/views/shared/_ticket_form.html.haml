@@ -2,11 +2,13 @@
 
   .ticket-category-form
     .service-select
-      = f.select :service, @services, prompt: "select a service"
+      = collection_select(:ticket, :service, @services, :id, :name, {prompt: "Select a Service"}, {id: "service_select"})
+      =# f.select :service, @services, prompt: "select a service"
 
     - if @categories.present?
       .category-select
-        = f.select :category, @categories, prompt: "select a category"
+        = collection_select(:ticket, :category, @categories, :id, :name, {prompt: "Select a Category"}, {id: "category_select"})
+        =# f.select :category, @categories, prompt: "select a category"
 
   .title-field.field
     = f.label :title
