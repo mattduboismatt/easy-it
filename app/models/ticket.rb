@@ -1,8 +1,9 @@
 class Ticket < ActiveRecord::Base
   belongs_to :user
-  belongs_to :category
+  has_one :ticket_category, dependent: :destroy
+  has_one :category, through: :ticket_category
 
-  validates :title, :description, presence: true
+  validates :title, :description, :category, presence: true
 
   enum state: [:open, :pending, :active, :closed]
 
