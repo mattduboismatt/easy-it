@@ -25,6 +25,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    get_service_and_category_options
   end
 
   def update

@@ -1,5 +1,14 @@
 %h3= @ticket.title
 
+.service-field
+  %h3 Service:
+  %p= @ticket.service.name
+
+.category-field
+  %h3 Category:
+  %p= @ticket.category.name
+
+
 .description-field
   %h3 Description
   %p= @ticket.description

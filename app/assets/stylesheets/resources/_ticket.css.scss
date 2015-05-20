@@ -3,6 +3,22 @@
     text-align: center;
   }
 
+  .service-select,
+  .category-select {
+    text-align: center;
+    
+    select {
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+    }
+  }
+
+  .category-select {
+    // @include span-columns(3);
+    // width: 40%;
+  }
+
   .title-field {
     @include shift(3);
     @include span-columns(6);
@@ -95,6 +111,24 @@
   }
 
   &.show-action {
+    .service-field {
+      @include shift(3);
+
+      h3, p {
+        text-align: left;
+        display: inline-block;
+      }
+    }
+
+    .category-field {
+      @include shift(3);
+
+      h3, p {
+        text-align: left;
+        display: inline-block;
+      }
+    }
+
     .description-field h3 {
       text-align: left;
     }

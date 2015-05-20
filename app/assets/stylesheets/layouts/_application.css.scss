@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 %centered-container {
 	@include outer-container;
 }
