@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.category = Category.find(params[:ticket][:category].to_i)
     if @ticket.save
       flash[:notice] = "Ticket successfully created."
       redirect_to root_path
@@ -54,17 +55,15 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(
       :title,
       :description,
-      :category
     ).merge(user_id: current_user.id)
   end
 
   def get_service_and_category_options
-    @services = Service.order(:name)#.map{ |s| [s.name, s.id] }
-    @categories = Category.order(:name)#.map{ |c| [c.name, c.id] }
-    # if @ticket.service.present?
-    #   @categories = @ticket.service.categories
-    # else
-    #   @categories = []
-    # end
+    @services = Service.order(:name)
+    if @ticket.service.present?
+      @categories = @ticket.service.categories.order(:name)
+    else
+      @categories = []
+    end
   end
 end
