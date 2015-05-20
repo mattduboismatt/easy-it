@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20150520164543) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
+    t.integer  "service_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "service_id"
   end
 
   add_index "categories", ["service_id"], name: "index_categories_on_service_id", using: :btree
