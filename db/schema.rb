@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520164543) do
+ActiveRecord::Schema.define(version: 20150521145257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20150520164543) do
 
   add_index "ticket_categories", ["category_id"], name: "index_ticket_categories_on_category_id", using: :btree
   add_index "ticket_categories", ["ticket_id"], name: "index_ticket_categories_on_ticket_id", using: :btree
+
+  create_table "ticket_services", force: :cascade do |t|
+    t.integer "ticket_id"
+    t.integer "service_id"
+  end
+
+  add_index "ticket_services", ["service_id"], name: "index_ticket_services_on_service_id", using: :btree
+  add_index "ticket_services", ["ticket_id"], name: "index_ticket_services_on_ticket_id", using: :btree
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id",                 null: false
