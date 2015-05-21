@@ -12,13 +12,15 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.category = Category.find(params[:ticket][:category].to_i)
+    @ticket.service = @ticket.category.service
+    
     if @ticket.save
-      @ticket.category = Category.find(params[:ticket][:category].to_i)
-      @ticket.service = @ticket.category.service
       flash[:notice] = "Ticket successfully created."
       redirect_to root_path
     else
       flash.now[:alert] = @ticket.errors.full_messages.to_sentence
+      get_service_and_category_options
       render :new
     end
   end
@@ -32,7 +34,7 @@ class TicketsController < ApplicationController
 
   def update
     if @ticket.update_attributes(ticket_params)
-      flash[:notice] = "Ticket successfully updated"
+      flash[:notice] = "Ticket successfully updated."
       redirect_to root_path
     else
       flash.now[:alert] = @ticket.errors.full_messages.to_sentence
@@ -60,8 +62,8 @@ class TicketsController < ApplicationController
   end
 
   def get_service_and_category_options
-    @services = Service.order(:name).map { |s| [s.name, s.id] }
-    @categories = Category.order(:name).map { |c| [c.name, c.id] }
+    @services = Service.order(:name)
+    @categories = Category.order(:name)
     # if @ticket.service.present?
     #   @categories = @ticket.service.categories.order(:name).map { |c| [c.name, c.id] }
     # else
