@@ -10,7 +10,6 @@ puts "Seeding services"
 computers = Service.create(name: 'Computers')
 home_theater = Service.create(name: 'Home Theater')
 mobile = Service.create(name: 'Mobile')
-portable = Service.create(name: 'Portable')
 car_and_gps = Service.create(name: 'Car and GPS')
 network_data = Service.create(name: 'Network Data')
 smart_home = Service.create(name: 'Smart Home')

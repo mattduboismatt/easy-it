@@ -62,12 +62,11 @@ class TicketsController < ApplicationController
   end
 
   def get_service_and_category_options
-    @services = Service.order(:name)
-    @categories = Category.order(:name)
-    # if @ticket.service.present?
-    #   @categories = @ticket.service.categories.order(:name).map { |c| [c.name, c.id] }
-    # else
-    #   @categories = []
-    # end
+    @services = Service.order(:name).map { |s| [s.name, s.id] }
+    if @ticket.service.present?
+      @categories = @ticket.service.categories.order(:name).map { |c| [c.name, c.id] }
+    else
+      @categories = []
+    end
   end
 end
