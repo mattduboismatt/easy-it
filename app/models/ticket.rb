@@ -9,7 +9,4 @@ class Ticket < ActiveRecord::Base
 
   enum state: [:open, :pending, :active, :closed]
 
-  def service
-    category.present? ? category.service : nil
-  end
 end

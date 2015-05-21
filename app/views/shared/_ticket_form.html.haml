@@ -1,10 +1,10 @@
 = form_for @ticket do |f|
 
   .service-select
-    = f.select :service, options_for_select(@services), {prompt: 'Select a Service'}, required: true
+    = f.select :service, options_for_select(@services, @ticket.service.present? ? "#{@ticket.service.id}" : nil), {prompt: 'Select a Service'}, required: true
 
   .category-select
-    = f.select :category, options_for_select(@categories), {prompt: 'Select a Category'}, required: true
+    = f.select :category, options_for_select(@categories, @ticket.category.present? ? "#{@ticket.category.id}" : nil), {prompt: 'Select a Category'}, required: true
 
   .title-field.field
     = f.label :title

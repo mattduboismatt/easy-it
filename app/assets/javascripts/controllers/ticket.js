@@ -1,7 +1,7 @@
 App.createController("Tickets", {
   actions: [
       { new: "setupForm" },
-      { create: "setupForm" }
+      { edit: "setupForm" }
   ],
 
   setupForm: function() {

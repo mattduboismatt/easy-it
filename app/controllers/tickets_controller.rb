@@ -12,7 +12,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.category = Category.find(params[:ticket][:category].to_i)
+    @ticket.category = Category.find(params[:ticket][:category_id].to_i)
     @ticket.service = @ticket.category.service
     
     if @ticket.save

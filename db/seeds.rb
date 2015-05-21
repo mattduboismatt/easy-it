@@ -34,5 +34,6 @@ UPCOMING_TECHNOLOGIES.each { |cat| upcoming_technologies.categories << Category.
 
 puts "Creating 5 tickets"
 5.times do
-  FactoryGirl.create(:ticket, user: user, category: Category.all.sample)
+  category = Category.all.sample
+  FactoryGirl.create(:ticket, user: user, category: category, service: category.service)
 end
