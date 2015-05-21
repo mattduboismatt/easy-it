@@ -13,6 +13,7 @@ gem 'faker', github: 'devmynd/faker'
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'jquery-rails'
+gem "jskit_rails"
 gem 'money-rails'
 gem 'neat'
 gem 'pg'
